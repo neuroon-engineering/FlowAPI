@@ -1,13 +1,10 @@
+
+from keras.layers import Conv2D, MaxPooling2D
 import tensorflow as tf
-from tensorflow import keras
+from keras.layers import Activation, Dropout, Flatten, Dense
+from keras.models import Sequential
 
-
-def create_nn_model():
-	if keras.image_data_format() == 'channels_first':
-	    input_shape = (3, img_width, img_height)
-	else:
-	    input_shape = (img_width, img_height, 3)
-
+def create_nn_model(input_shape, img_width, img_height):
 	model = Sequential()
 	model.add(Conv2D(32, (3, 3), input_shape=input_shape))
 	model.add(Activation('relu'))
@@ -27,9 +24,5 @@ def create_nn_model():
 	model.add(Dropout(0.5))
 	model.add(Dense(1))
 	model.add(Activation('sigmoid'))
-
-	model.compile(loss='binary_crossentropy',
-		      optimizer=tf.train.AdamOptimizer(),
-		      metrics=['accuracy'])
 
 	return model
