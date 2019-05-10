@@ -4,6 +4,7 @@ import subprocess
 import tensorflow as tf
 from tensorflow import keras
 
+from new_train_model import returnCompiledModel as model
 
 def generate_serve_files(model):
 

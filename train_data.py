@@ -54,7 +54,7 @@ if os.path.isdir(export_path):
   print('\nAlready saved a model, cleaning up\n')
 
 tf.saved_model.simple_save(
-    keras.backend.get_session(),
+    K.backend.get_session(),
     export_path,
     inputs={'input_image': model.input},
     outputs={t.name:t for t in model.outputs})
